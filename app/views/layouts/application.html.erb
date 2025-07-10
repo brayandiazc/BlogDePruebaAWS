@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Blog De Prueba Aws" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Pico.css for styling %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="container">
+      <%# Flash messages for Devise %>
+      <% if notice %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
+      
+      <% if alert %>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+      <% end %>
+      
+      <%# Navigation %>
+      <nav>
+        <ul>
+          <li><strong>BlogDePruebaAWS</strong></li>
+        </ul>
+        <ul>
+          <li><%= link_to "Inicio", root_path %></li>
+          <li><%= link_to "Artículos", articles_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Nuevo Artículo", new_article_path %></li>
+            <li><%= link_to "Mi Perfil", edit_user_registration_path %></li>
+            <li><%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "outline" %></li>
+          <% else %>
+            <li><%= link_to "Iniciar Sesión", new_user_session_path %></li>
+            <li><%= link_to "Registrarse", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+      
+      <%= yield %>
+    </main>
+  </body>
+</html>

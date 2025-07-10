@@ -1,0 +1,70 @@
+<%= form_with(model: article, html: { enctype: "multipart/form-data", id: "article-form" }) do |form| %>
+  <% if article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(article.errors.count, "error") %> impidieron guardar el artículo:</h2>
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, required: true, minlength: 3, maxlength: 100 %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description, required: true, minlength: 10 %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, [['Borrador', 'draft'], ['Publicado', 'published']], prompt: "Selecciona el estado", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, "Categoría", style: "display: block" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "Selecciona una categoría", required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "Imagen" %>
+    <%= form.file_field :image, accept: "image/jpeg,image/png,image/webp,image/gif" %>
+  </div>
+
+  <div>
+    <%= form.submit "Guardar", class: "contrast" %>
+  </div>
+<% end %>
+
+<script>
+// Validación extra en frontend (opcional)
+document.getElementById('article-form').addEventListener('submit', function(e) {
+  const title = this.querySelector('[name="article[title]"]');
+  const description = this.querySelector('[name="article[description]"]');
+  const image = this.querySelector('[name="article[image]"]');
+  if (title.value.length < 3) {
+    alert('El título debe tener al menos 3 caracteres.');
+    e.preventDefault();
+  }
+  if (description.value.length < 10) {
+    alert('La descripción debe tener al menos 10 caracteres.');
+    e.preventDefault();
+  }
+  if (image.files.length > 0) {
+    const file = image.files[0];
+    const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    if (!validTypes.includes(file.type)) {
+      alert('La imagen debe ser JPG, PNG, WEBP o GIF.');
+      e.preventDefault();
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      alert('La imagen debe ser menor a 2MB.');
+      e.preventDefault();
+    }
+  }
+});
+</script>
