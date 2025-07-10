@@ -29,8 +29,8 @@ Vamos a elegir las opciones que mejor se adapten a nuestro proyecto de práctica
 - **Settings:**
 
   - **DB instance identifier:** Dale un nombre único a tu instancia de base de datos, por ejemplo: `blogdepruebaaws-db`.
-  - **Master username:** Introduce un nombre de usuario para tu base de datos. Por ejemplo: `admin`.
-  - **Master password:** Introduce una **contraseña segura y compleja** para tu usuario `admin`. **¡Guarda esta contraseña en un lugar muy seguro!** La necesitarás para configurar tu aplicación Rails.
+  - **Master username:** Introduce un nombre de usuario para tu base de datos. Por ejemplo: `postgres`.
+  - **Master password:** Introduce una **contraseña segura y compleja** para tu usuario `postgres`, por ejemplo `postgres-p455w0rd` **¡Guarda esta contraseña en un lugar muy seguro!** La necesitarás para configurar tu aplicación Rails.
   - **Confirm password:** Vuelve a escribir la contraseña.
 
 - **DB instance size:**
