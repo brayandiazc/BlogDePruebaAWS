@@ -1,6 +1,6 @@
 # Configuración Inicial en AWS: Usuario IAM
 
-¡Excelente! Ahora que tenemos la aplicación base, vamos a llevarla a la nube. Antes de configurar **S3**, **EC2** y **RDS**, es crucial que creemos un **usuario IAM** (Identity and Access Management) específico para este proyecto.
+Antes de configurar **S3**, **EC2** y **RDS**, es crucial que creemos un **usuario IAM** (Identity and Access Management) específico para este proyecto.
 
 ## ¿Por qué necesitamos un usuario IAM?
 
