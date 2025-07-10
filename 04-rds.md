@@ -1,19 +1,15 @@
----
-¡Perfecto! Con tu instancia EC2 preparada para Ruby y Rails, el siguiente componente crucial es la **base de datos**. Vamos a configurar **Amazon RDS (Relational Database Service)** para PostgreSQL. RDS es un servicio gestionado que simplifica la administración de bases de datos relacionales, incluyendo copias de seguridad, parches y escalabilidad.
----
-
-## Configuración de Amazon RDS para PostgreSQL
+# Configuración de Amazon RDS para PostgreSQL
 
 Aquí te guiaré paso a paso para crear tu instancia de base de datos PostgreSQL en RDS.
 
-### 1. Iniciar el Proceso de Creación de Instancias de RDS
+## 1. Iniciar el Proceso de Creación de Instancias de RDS
 
-1.  **Inicia sesión en la Consola de AWS** con tu usuario IAM (o tu usuario raíz si sigues usando ese).
-2.  En la barra de búsqueda, escribe **"RDS"** y selecciona el servicio.
-3.  En el panel de navegación izquierdo, haz clic en **"Databases"** (Bases de datos).
-4.  Haz clic en el botón naranja **"Create database"** (Crear base de datos).
+1. **Inicia sesión en la Consola de AWS** con tu usuario IAM (o tu usuario raíz si sigues usando ese).
+2. En la barra de búsqueda, escribe **"RDS"** y selecciona el servicio.
+3. En el panel de navegación izquierdo, haz clic en **"Databases"** (Bases de datos).
+4. Haz clic en el botón naranja **"Create database"** (Crear base de datos).
 
-### 2. Configurar los Detalles de la Base de Datos
+## 2. Configurar los Detalles de la Base de Datos
 
 Vamos a elegir las opciones que mejor se adapten a nuestro proyecto de práctica.
 
@@ -89,23 +85,17 @@ Vamos a elegir las opciones que mejor se adapten a nuestro proyecto de práctica
 - **Deletion protection:**
   - Para un proyecto de práctica, te recomiendo **desactivar "Enable deletion protection"** (Desactivar protección de eliminación). Esto te permitirá eliminar la instancia de RDS fácilmente cuando termines para evitar cargos inesperados. Para un entorno de producción, ¡siempre actívala!
 
-### 3. Crear la Base de Datos
+## 3. Crear la Base de Datos
 
-1.  Revisa todos los detalles de configuración en el resumen lateral.
-2.  Haz clic en **"Create database"**.
+1. Revisa todos los detalles de configuración en el resumen lateral.
+2. Haz clic en **"Create database"**.
 
 La creación de la instancia de RDS puede tardar varios minutos (10-20 minutos). Verás el estado como `creating` y luego `available`.
 
-### 4. Obtener el Endpoint de RDS
+## 4. Obtener el Endpoint de RDS
 
 Una vez que tu instancia de RDS esté en estado **`available`**:
 
-1.  En la lista de bases de datos, haz clic en el **nombre de tu nueva instancia de RDS** (`blogdepruebaaws-db`).
-2.  En la sección **"Connectivity & security"**, busca el **"Endpoint"** (punto final). Será una URL como `blogdepruebaaws-db.xxxxxxxxx.us-east-1.rds.amazonaws.com`.
-3.  **Copia este Endpoint.** Esta será la dirección del servidor de tu base de datos para tu aplicación Rails.
-
----
-
-Una vez que tengas tu instancia de RDS `available` y hayas copiado su **Endpoint**, estaremos listos para configurar tu aplicación Rails para que se conecte a esta base de datos.
-
-¿Todo listo para crear tu instancia de RDS?
+1. En la lista de bases de datos, haz clic en el **nombre de tu nueva instancia de RDS** (`blogdepruebaaws-db`).
+2. En la sección **"Connectivity & security"**, busca el **"Endpoint"** (punto final). Será una URL como `blogdepruebaaws-db.xxxxxxxxx.us-east-1.rds.amazonaws.com`.
+3. **Copia este Endpoint.** Esta será la dirección del servidor de tu base de datos para tu aplicación Rails.
